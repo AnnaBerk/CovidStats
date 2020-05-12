@@ -208,7 +208,7 @@ let country_list = [
 const search_country_element = document.querySelector(".search-country");
 const country_list_element = document.querySelector(".country-list");
 const change_country_btn = document.querySelector(".change-country");
-const sclode_list_btn = document.querySelector(".close");
+const close_list_btn = document.querySelector(".close");
 const input = document.getElementById("search-input");
 
 function createCountryList(){
@@ -230,3 +230,16 @@ function createCountryList(){
     })
 }
 createCountryList();
+
+change_country_btn.addEventListener("click", function(){
+    search_country_element.classList.toggle("hide");
+    search_country_element.classList.add("fadeIn");
+});
+
+close_list_btn.addEventListener("click", function(){
+    search_country_element.classList.toggle("hide");
+});
+
+country_list_element.addEventListener("click", function(){
+    search_country_element.classList.toggle("hide");
+});
