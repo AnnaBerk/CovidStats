@@ -151,7 +151,61 @@ main{
     padding: 50px 0;
 }
 /* -------- SEARCH COUNTRY -------- */
+.search-country{
+    position: relative;
+    top: 15px;
+}
+.search-box{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    height: 30px;
+    background-color: #111;
+    z-index: 1;
+}
+.search-box input{
+    width: 360px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    color:#fff;
+    padding-left: 15px;
+}
+.search-box img{
+    width: 20px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+.country-list{
+    position: absolute;
+    display: flex;
 
+    top: 30px;
+    width: 400px;
+    height: 300px;
+    background-color: #111;
+    opacity: 0.9;
+    overflow-y: scroll;
+}
+.country-list ul{
+    width: 100%;
+    list-style: none; 
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+}
+.country-list ul li{
+   list-style: none; 
+   cursor: pointer;
+   padding: 10px;
+   color: #fff;
+
+}
+.country-list ul li:hover{
+    border-left: 1px solid #fff;
+}
 /* SCROLL BAR */
 
 /* ---------------------------------------------- */
