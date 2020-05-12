@@ -208,10 +208,14 @@ main{
 }
 /* SCROLL BAR */
 
-/* ---------------------------------------------- */
-/*                    FOOTER                      */
-/* ---------------------------------------------- */
 
 /* ---------------------------------------------- */
 /*             SCREEN WIDTH < 600px               */
 /* ---------------------------------------------- */
+@media screen and (max-width: 600px){
+    .latest-report{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
