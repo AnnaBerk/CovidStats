@@ -204,3 +204,29 @@ let country_list = [
     { name: 'Yemen', code: 'YE' },
     { name: 'China', code: 'CN' }
 ];
+
+const search_country_element = document.querySelector(".search-country");
+const country_list_element = document.querySelector(".country-list");
+const change_country_btn = document.querySelector(".change-country");
+const sclode_list_btn = document.querySelector(".close");
+const input = document.getElementById("search-input");
+
+function createCountryList(){
+    const num_countries = country_list.length;
+
+    let i =0, ul_list_id;
+    let num_of_ul_lists = 3;
+
+    country_list.forEach((country, index) =>{
+        if(index % Math.ceil(num_countries/num_of_ul_lists) == 0){
+            ul_list_id = `list-${i}`;
+            country_list_element.innerHTML += `<ul id='${ul_list_id}'><ul>`;
+            i++;
+        }
+        document.getElementById(`${ul_list_id}`).innerHTML +=`
+        <li onclick="fetchData('${country.name}')" id='${country.name}'>
+        ${country.name}
+        </li>`;
+    })
+}
+createCountryList();
