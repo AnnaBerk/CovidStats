@@ -233,6 +233,7 @@ createCountryList();
 
 change_country_btn.addEventListener("click", function(){
     input.value = "";
+    resetCountryList();
     search_country_element.classList.toggle("hide");
     search_country_element.classList.add("fadeIn");
 });
@@ -256,3 +257,9 @@ input.addEventListener("input", function(){
         }
     })
 })
+
+function resetCountryList(){
+    country_list.forEach(country =>{
+        document.getElementById(country.name).classList.remove("hide");
+    })
+}
