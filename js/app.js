@@ -3,7 +3,7 @@ const country_name_element = document.querySelector(".country .name");
 const total_cases_element = document.querySelector(".total-cases .value");
 const new_cases_element = document.querySelector(".total-cases .new-value");
 const recovered_element = document.querySelector(".recovered .value");
-const newrecovered_element = document.querySelector(".recovered .new-value");
+const new_recovered_element = document.querySelector(".recovered .new-value");
 const deaths_element = document.querySelector(".deaths .value");
 const new_deaths_element = document.querySelector(".deaths .new-value");
 
@@ -50,5 +50,30 @@ fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_c
 			deaths_list.push(parseInt(DATA.total_deaths.replace(/,/g,"")));
     	})
 	})
+	.then( () =>{
+		updateUI();
+	})
+	.catch( error =>{
+		alert(error);
+	})
 }
 fetchData(user_country);
+
+function updateUI(){
+	updateStats();
+}
+
+function updateStats(){
+	let last_entry = app_data[app_data.length - 1];
+	let before_last_entry = app_data[app_data.length - 2];
+
+	country_name_element.innerHTML = last_entry.country_name;
+	total_cases_element.innerHTML = last_entry.total_cases || 0;
+	new_cases_element.innerHTML = last_entry.new_cases || 0;
+
+	recovered_element.innerHTML = last_entry.total_recovered || 0;
+	new_recovered_element.innerHTML = parseInt(last_entry.total_recovered.replace(/,/g,"")) - parseInt(before_last_entry.total_recovered.replace(/,/g,""));
+
+	deaths_element.innerHTML = last_entry.total_deaths || 0;
+	new_deaths_element.innerHTML = last_entry.new_deaths || 0;
+}
