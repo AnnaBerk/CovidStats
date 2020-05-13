@@ -40,7 +40,15 @@ fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_c
 		return response.json();
 	})
 	.then( data =>{
-		
+		dates = Object.keys(data);
+
+		dates.forEach(date =>{
+			let DATA = data[date];
+			app_data.push(DATA);
+			cases_list.push(parseInt(DATA.total_cases.replace(/,/g,"")));
+			recovered_list.push(parseInt(DATA.total_recovered.replace(/,/g,"")));
+			deaths_list.push(parseInt(DATA.total_deaths.replace(/,/g,"")));
+    	})
 	})
 }
 fetchData(user_country);
