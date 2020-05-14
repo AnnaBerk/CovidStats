@@ -29,6 +29,7 @@ let app_data = [],
 /*                API URL AND KEY                 */
 /* ---------------------------------------------- */
 function fetchData(user_country){
+	cases_list = [], recovered_list =[], deaths_list =[], dates =[];
 fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_country.php?country=${user_country}`, {
 		"method": "GET",
 		"headers": {
@@ -81,15 +82,39 @@ function updateStats(){
 
 let my_chart;
 function axesLinearChart(){
+	if(my_chart){
+		my_chart.destroy();
+	}
 
 	 my_chart = new Chart(ctx, {
 		type: 'line',
 		data: {
 			datasets: [{
-				label: 'First dataset',
-				data: [0, 20, 40, 50]
-			}],
-			labels: ['January', 'February', 'March', 'April']
+				label: 'Cases',
+				data: cases_list,
+				fill: false,
+				borderColor: '#fff',
+				backgroundColor: '#fff',
+				borderWidth: 1
+			},
+			{
+				label: 'Recovered',
+				data: recovered_list,
+				fill: false,
+				borderColor: '#009688',
+				backgroundColor: '#009688',
+				borderWidth: 1
+			},
+			{
+				label: 'Deaths',
+				data: deaths_list,
+				fill: false,
+				borderColor: '#f44336',
+				backgroundColor: '#f44336',
+				borderWidth: 1
+			},
+		],
+			labels: dates
 		},
 		options: {
 			responsive : true,
