@@ -30,6 +30,7 @@ let app_data = [],
 /*                API URL AND KEY                 */
 /* ---------------------------------------------- */
 function fetchData(user_country){
+	country_name_element.innerHTML = "Loading..."
 	cases_list = [], recovered_list =[], deaths_list =[], dates =[], formatedDates = [];
 fetch(`https://covid19-monitor-pro.p.rapidapi.com/coronavirus/cases_by_days_by_country.php?country=${user_country}`, {
 		"method": "GET",
