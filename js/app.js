@@ -61,6 +61,7 @@ fetchData(user_country);
 
 function updateUI(){
 	updateStats();
+	axesLinearChart();
 }
 
 function updateStats(){
@@ -76,4 +77,23 @@ function updateStats(){
 
 	deaths_element.innerHTML = last_entry.total_deaths || 0;
 	new_deaths_element.innerHTML = last_entry.new_deaths || 0;
+};
+
+let my_chart;
+function axesLinearChart(){
+
+	 my_chart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			datasets: [{
+				label: 'First dataset',
+				data: [0, 20, 40, 50]
+			}],
+			labels: ['January', 'February', 'March', 'April']
+		},
+		options: {
+			responsive : true,
+			maintainAspectRatio : false,
+		}
+	});
 }
